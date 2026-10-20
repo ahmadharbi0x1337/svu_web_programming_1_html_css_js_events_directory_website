@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>كل الفعاليات | دليل فعاليات الجامعة الافتراضية</title>
+    <!-- Bootstrap 5 (right-to-left version) from CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <!-- Web fonts suggested in the homework: Cairo and Tajawal -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="assets/css/styles.css" rel="stylesheet" />
+    <link rel="icon" href="assets/img/logo.svg" />
+  </head>
+  <body id="eventsPage">
+    <!-- Header -->
+    <header>
+      <nav class="navbar navbar-expand-lg site-navbar" data-bs-theme="dark">
+        <div class="container">
+          <a
+            class="navbar-brand d-flex align-items-center gap-2"
+            href="index.html"
+          >
+            <img
+              src="assets/img/logo.svg"
+              class="brand-logo"
+              alt="شعار الدليل"
+            />
+            <span>دليل فعاليات الجامعة الافتراضية</span>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainMenu"
+            aria-controls="mainMenu"
+            aria-label="القائمة"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainMenu">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">الرئيسية</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="events.html">كل الفعاليات</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">عن الدليل</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">اتصل بنا</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+      <section class="page-banner text-center">
+        <div class="container">
+          <h1>كل الفعاليات</h1>
+          <p class="lead mb-0">ابحث وصفّ حسب التصنيف والتاريخ والمكان</p>
+        </div>
+      </section>
+
+      <!-- Section 1: search and filter toolbar -->
+      <section class="container mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="row g-3 align-items-end">
+              <div class="col-12 col-lg-3">
+                <label class="form-label fw-bold" for="searchInput">بحث</label>
+                <input
+                  id="searchInput"
+                  type="text"
+                  class="form-control"
+                  placeholder="اكتب كلمة للبحث..."
+                />
+              </div>
+              <div class="col-6 col-lg-2">
+                <label class="form-label fw-bold" for="categoryFilter"
+                  >التصنيف</label
+                >
+                <select id="categoryFilter" class="form-select">
+                  <option value="">كل التصنيفات</option>
+                  <option value="culture">ثقافة</option>
+                  <option value="sports">رياضة</option>
+                  <option value="music">موسيقى</option>
+                  <option value="family">عائلي</option>
+                  <option value="academic">أكاديمي</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-2">
+                <label class="form-label fw-bold" for="placeFilter"
+                  >المكان</label
+                >
+                <select id="placeFilter" class="form-select">
+                  <option value="">كل الأماكن</option>
+                  <option value="القاعة الكبرى">القاعة الكبرى</option>
+                  <option value="الملعب الرياضي">الملعب الرياضي</option>
+                  <option value="المسرح المفتوح">المسرح المفتوح</option>
+                  <option value="حديقة الجامعة">حديقة الجامعة</option>
+                  <option value="قاعة المعارض">قاعة المعارض</option>
+                  <option value="كورنيش المدينة">كورنيش المدينة</option>
+                  <option value="مبنى كلية المعلوماتية">
+                    مبنى كلية المعلوماتية
+                  </option>
+                  <option value="المكتبة المركزية">المكتبة المركزية</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-3">
+                <label class="form-label fw-bold" for="dateFilter"
+                  >من تاريخ</label
+                >
+                <input id="dateFilter" type="date" class="form-control" />
+              </div>
+              <div class="col-6 col-lg-2">
+                <button
+                  id="resetButton"
+                  type="button"
+                  class="btn btn-outline-secondary w-100"
+                >
+                  إعادة ضبط
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: all events as cards -->
+      <section class="container">
+        <h2 class="section-title">النتائج (<span id="resultCount">8</span>)</h2>
+        <div class="row g-4">
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3" id="eventCard1">
+            <div class="card event-card h-100 position-relative">
+              <img
+                src="assets/img/event-1.svg"
+                class="card-img-top"
+                alt="مهرجان المسرح الجامعي"
+              />
+              <div class="card-body">
+                <span class="badge category-culture align-self-start mb-2"
+                  >ثقافة</span
+                >
+                <h5 class="card-title">مهرجان المسرح الجامعي</h5>
+                <p class="card-text small mb-1">📅 الأربعاء 14 أكتوبر 2026</p>
+                <p class="card-text small">📍 القاعة الكبرى</p>
+                <p class="card-text small">
+                  عروض مسرحية يقدمها طلاب الجامعة الافتراضية على مدى ثلاث ليالٍ،
+                  تتضمن مسرحيات قصيرة وورش تمثيل وجلسات نقاش مع مخرجين ضيوف.
+                </p>
+                <a href="event.html?id=1" class="btn btn-brand">التفاصيل</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3" id="eventCard2">
+            <div class="card event-card h-100 position-relative">
+              <img
+                src="assets/img/event-2.svg"
+                class="card-img-top"
+                alt="بطولة كرة القدم بين الكليات"
+              />
+              <div class="card-body">
+                <span class="badge category-sports align-self-start mb-2"
+                  >رياضة</span
+                >
+                <h5 class="card-title">بطولة كرة القدم بين الكليات</h5>
+                <p class="card-text small mb-1">📅 الجمعة 16 أكتوبر 2026</p>
+                <p class="card-text small">📍 الملعب الرياضي</p>
+                <p class="card-text small">
+                  تنافس بين فرق الكليات المختلفة على كأس الجامعة مع مباريات
+                  مباشرة وجوائز قيّمة.
+                </p>
+                <a href="event.html?id=2" class="btn btn-brand">التفاصيل</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3" id="eventCard3">
+            <div class="card event-card h-100 position-relative">
+              <img
+                src="assets/img/event-3.svg"
+                class="card-img-top"
+                alt="أمسية موسيقى الشرق"
+              />
+              <div class="card-body">
+                <span class="badge category-music align-self-start mb-2"
+                  >موسيقى</span
+                >
+                <h5 class="card-title">أمسية موسيقى الشرق</h5>
+                <p class="card-text small mb-1">📅 الأحد 11 أكتوبر 2026</p>
+                <p class="card-text small">📍 المسرح المفتوح</p>
+                <p class="card-text small">
+                  أمسية موسيقية تضم العود والقانون والإيقاع بمشاركة فرقة الجامعة
+                  وضيوف من الفنانين.
+                </p>
+                <a href="event.html?id=3" class="btn btn-brand">التفاصيل</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3" id="eventCard4">
+            <div class="card event-card h-100 position-relative">
+              <span
+                class="badge highlight-badge position-absolute top-0 start-0 m-2"
+                >🔥 فعالية مميزة</span
+              >
+              <img
+                src="assets/img/event-4.svg"
+                class="card-img-top"
+                alt="يوم العائلة الجامعي"
+              />
+              <div class="card-body">
+                <span class="badge category-family align-self-start mb-2"
+                  >عائلي</span
+                >
+                <h5 class="card-title">يوم العائلة الجامعي</h5>
+                <p class="card-text small mb-1">📅 الأحد 18 أكتوبر 2026</p>
+                <p class="card-text small">📍 حديقة الجامعة</p>
+                <p class="card-text small">
+                  يوم ترفيهي لعائلات الطلاب: ألعاب أطفال، مسابقات، ومعارض طعام
+                  وحِرَف يدوية.
+                </p>
+                <a href="event.html?id=4" class="btn btn-brand">التفاصيل</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3" id="eventCard5">
+            <div class="card event-card h-100 position-relative">
+              <img
+                src="assets/img/event-5.svg"
+                class="card-img-top"
+                alt="معرض الفنون التشكيلية"
+              />
+              <div class="card-body">
+                <span class="badge category-culture align-self-start mb-2"
+                  >ثقافة</span
+                >
+                <h5 class="card-title">معرض الفنون التشكيلية</h5>
+                <p class="card-text small mb-1">📅 الثلاثاء 20 أكتوبر 2026</p>
+                <p class="card-text small">📍 قاعة المعارض</p>
+                <p class="card-text small">
+                  معرض للوحات والمنحوتات من إبداع طلاب كلية الفنون مع جولات
+                  إرشادية.
+                </p>
+                <a href="event.html?id=5" class="btn btn-brand">التفاصيل</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3" id="eventCard6">
+            <div class="card event-card h-100 position-relative">
+              <img
+                src="assets/img/event-6.svg"
+                class="card-img-top"
+                alt="ماراثون الجامعة الأخضر"
+              />
+              <div class="card-body">
+                <span class="badge category-sports align-self-start mb-2"
+                  >رياضة</span
+                >
+                <h5 class="card-title">ماراثون الجامعة الأخضر</h5>
+                <p class="card-text small mb-1">📅 السبت 24 أكتوبر 2026</p>
+                <p class="card-text small">📍 كورنيش المدينة</p>
+                <p class="card-text small">
+                  سباق جري لمسافة 5 كم بهدف دعم حملة التشجير، مفتوح لجميع
+                  المستويات.
+                </p>
+                <a href="event.html?id=6" class="btn btn-brand">التفاصيل</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3" id="eventCard7">
+            <div class="card event-card h-100 position-relative">
+              <img
+                src="assets/img/event-7.svg"
+                class="card-img-top"
+                alt="ملتقى التقنية والابتكار"
+              />
+              <div class="card-body">
+                <span class="badge category-academic align-self-start mb-2"
+                  >أكاديمي</span
+                >
+                <h5 class="card-title">ملتقى التقنية والابتكار</h5>
+                <p class="card-text small mb-1">📅 الثلاثاء 27 أكتوبر 2026</p>
+                <p class="card-text small">📍 مبنى كلية المعلوماتية</p>
+                <p class="card-text small">
+                  محاضرات وورش عن الذكاء الاصطناعي وتطوير الويب مع عرض مشاريع
+                  التخرج.
+                </p>
+                <a href="event.html?id=7" class="btn btn-brand">التفاصيل</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-4 col-xl-3" id="eventCard8">
+            <div class="card event-card h-100 position-relative">
+              <img
+                src="assets/img/event-8.svg"
+                class="card-img-top"
+                alt="ليلة الشعر والأدب"
+              />
+              <div class="card-body">
+                <span class="badge category-culture align-self-start mb-2"
+                  >ثقافة</span
+                >
+                <h5 class="card-title">ليلة الشعر والأدب</h5>
+                <p class="card-text small mb-1">📅 الجمعة 30 أكتوبر 2026</p>
+                <p class="card-text small">📍 المكتبة المركزية</p>
+                <p class="card-text small">
+                  أمسية شعرية وأدبية يشارك فيها شعراء شباب وأساتذة الأدب العربي.
+                </p>
+                <a href="event.html?id=8" class="btn btn-brand">التفاصيل</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- shown by events-page.js when no event matches the filters -->
+        <div
+          id="noResults"
+          class="alert alert-warning text-center mt-4 initially-hidden"
+          role="alert"
+        >
+          لا توجد فعاليات مطابقة للبحث.
+        </div>
+      </section>
+
+      <!-- Section 3: tip -->
+      <section class="container mt-5">
+        <div class="alert alert-info mb-0" role="alert">
+          💡 يمكنك الجمع بين البحث والتصنيف والمكان والتاريخ للوصول إلى الفعالية
+          المناسبة.
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-5">
+            <h6>دليل فعاليات الجامعة الافتراضية</h6>
+            <p class="small">
+              منصة تجمع فعاليات الجامعة الثقافية والرياضية والموسيقية والعائلية
+              في مكان واحد.
+            </p>
+          </div>
+          <div class="col-6 col-md-3">
+            <h6>روابط سريعة</h6>
+            <ul class="list-unstyled small">
+              <li><a href="events.html">كل الفعاليات</a></li>
+              <li><a href="about.html">عن الدليل</a></li>
+              <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-4">
+            <h6>تواصل معنا</h6>
+            <p class="small mb-1">email@example.com 📧</p>
+            <p class="small mb-2">999 999 999 963+ 📞</p>
+            <a href="#">فيسبوك</a> · <a href="#">إنستغرام</a> ·
+            <a href="#">يوتيوب</a>
+          </div>
+        </div>
+        <hr />
+        <p class="text-center small mb-0">
+          © 2026 دليل فعاليات الجامعة الافتراضية - جميع الحقوق محفوظة
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
